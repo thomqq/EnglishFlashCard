@@ -17,21 +17,45 @@ import tq.arxsoft.englishflashcard.controllers.FlashCard;
  *
  * @author tkudas
  */
-
 @Component
 public class LessonManager {
-    
+
     @Autowired
-    @Qualifier("fake")        
+    @Qualifier("fake")
     QADao qadao;
-    
+
     private List<FlashCard> qanwers = new ArrayList<>();
-    
-    public FlashCard getNextFlashCard() {
-        if( qanwers.isEmpty() ) {
-            qanwers = qadao.getAllFlashCardsForLesson(1);
-        }
-        return qanwers.get(0);
+    private int pos = -1;
+    private boolean confirmCurrentFlashCard = false;
+
+    private void initLesson() {
+        qanwers = qadao.getAllFlashCardsForLesson(1);
+        pos = -1;
+        confirmCurrentFlashCard = true;
     }
-    
+
+    private FlashCard getNextFlashCard() {
+        confirmCurrentFlashCard = false;
+        return qanwers.get(++pos);
+    }
+
+    private FlashCard getCurrentFlashCard() {
+
+        return qanwers.get(pos);
+    }
+
+    public FlashCard getFlashCard() {
+        if (qanwers.isEmpty()) {
+            initLesson();
+        }
+        if (confirmCurrentFlashCard) {
+            return getNextFlashCard();
+        } else {
+            return getCurrentFlashCard();
+        }
+    }
+
+    public void confirmFlashCard() {
+        confirmCurrentFlashCard = true;
+    }
 }

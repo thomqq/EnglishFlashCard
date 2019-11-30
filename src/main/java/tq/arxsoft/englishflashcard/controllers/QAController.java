@@ -23,9 +23,18 @@ public class QAController {
 
     @RequestMapping("/show")
     public String show(Model model) {
-
-        FlashCard qanswer = lessonManager.getNextFlashCard();
-        model.addAttribute("question", qanswer);
+        FlashCard qanswer = lessonManager.getFlashCard();
+        model.addAttribute("showAnswer", "false");
+        model.addAttribute("card", qanswer);
+        return "QAPage";
+    }
+    
+    @RequestMapping("/answer")
+    public String answer(Model model) {
+        FlashCard qanswer = lessonManager.getFlashCard();
+        lessonManager.confirmFlashCard();
+        model.addAttribute("card", qanswer);
+        model.addAttribute("showAnswer", "true");
         return "QAPage";
     }
 }

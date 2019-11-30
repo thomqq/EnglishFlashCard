@@ -3,7 +3,7 @@
     Created on : 2019-11-30, 09:23:45
     Author     : tkudas
 --%>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,20 @@
     <body>
         <table class="mainTable">
             <tr with="300">
-                <td>${question.question} </td> 
+                <td>Pytanie: </td><td>${card.question} </td>
+            </tr>
+            <c:set var="answer" value="${showAnswer}"/>
+            <tr with="300">
+                <td>Odpowiedź: </td><td>
+                    <c:choose>
+                        <c:when test="${answer.equals('true')}">
+                            ${question.question}
+                        </c:when>
+                        <c:otherwise>
+                            --------
+                        </c:otherwise>
+                    </c:choose>
+                </td>
             </tr>
         </table>
     </body>
