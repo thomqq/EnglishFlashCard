@@ -5,6 +5,7 @@
  */
 package tq.arxsoft.englishflashcard.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class QAController {
     
+    @Autowired
+    public LessonManager lessonManager;
+    
     @RequestMapping("/show")
     public String show(Model model) {
-        model.addAttribute("question","DRZWI");
+        
+       QAnswer qanswer = lessonManager.getNextQA();
+        
+        model.addAttribute("question",qanswer.getQuestion());
         return "QAPage";
     }
 }
