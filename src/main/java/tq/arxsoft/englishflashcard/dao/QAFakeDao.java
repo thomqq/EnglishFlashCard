@@ -22,6 +22,7 @@ public class QAFakeDao implements QADao {
     public List<FlashCard> getAllFlashCardsForLesson(long id) {
        List< FlashCard > qanswers = new ArrayList<>();
        qanswers.add( new FlashCard("SŁOŃCE", "SUN"));
+       qanswers.add( new FlashCard("DZRZWI", "DOOR"));
        return qanswers;
     }
     
