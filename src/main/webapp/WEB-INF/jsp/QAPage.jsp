@@ -15,7 +15,7 @@
     <body>
         <table class="mainTable">
             <tr with="300">
-                <td>${question}</td> 
+                <td>${question} </td> 
             </tr>
         </table>
     </body>
