@@ -9,11 +9,11 @@ package tq.arxsoft.englishflashcard.controllers;
  *
  * @author tkudas
  */
-public class QAnswer {
+public class FlashCard {
     private String question;
     private String answer;
 
-    public QAnswer(String question, String answer) {
+    public FlashCard(String question, String answer) {
         this.question = question;
         this.answer = answer;
     }

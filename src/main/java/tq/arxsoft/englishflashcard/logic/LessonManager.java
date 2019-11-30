@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tq.arxsoft.englishflashcard.controllers;
+package tq.arxsoft.englishflashcard.logic;
 
+import tq.arxsoft.englishflashcard.dao.QADao;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import tq.arxsoft.englishflashcard.controllers.FlashCard;
 
 /**
  *
@@ -23,11 +25,11 @@ public class LessonManager {
     @Qualifier("fake")        
     QADao qadao;
     
-    private List<QAnswer> qanwers = new ArrayList<>();
+    private List<FlashCard> qanwers = new ArrayList<>();
     
-    public QAnswer getNextQA() {
+    public FlashCard getNextFlashCard() {
         if( qanwers.isEmpty() ) {
-            qanwers = qadao.getAllQAnwerForLesson(1);
+            qanwers = qadao.getAllFlashCardsForLesson(1);
         }
         return qanwers.get(0);
     }

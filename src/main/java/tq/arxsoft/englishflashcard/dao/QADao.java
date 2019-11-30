@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tq.arxsoft.englishflashcard.controllers;
+package tq.arxsoft.englishflashcard.dao;
 
 import java.util.List;
+import tq.arxsoft.englishflashcard.controllers.FlashCard;
 
 /**
  *
  * @author tkudas
  */
 public interface QADao {
-    List< QAnswer > getAllQAnwerForLesson(long id);
+    List< FlashCard > getAllFlashCardsForLesson(long id);
 }
