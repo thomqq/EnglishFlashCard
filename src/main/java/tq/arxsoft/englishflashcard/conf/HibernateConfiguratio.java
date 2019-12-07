@@ -33,9 +33,9 @@ public class HibernateConfiguratio {
     public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
         LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
         sfb.setDataSource(dataSource);
-        sfb.setPackagesToScan(new String[]{"com.habuma.spittr.domain"});
+        sfb.setPackagesToScan(new String[]{"tq.arxsoft.englishflashcard"});
         Properties props = new Properties();
-        props.setProperty("dialect", "org.hibernate.dialect.H2Dialect");
+        props.setProperty("dialect", "org.hibernate.dialect.PostgreSQLDialect");
         sfb.setHibernateProperties(props);
         return sfb;
     }
